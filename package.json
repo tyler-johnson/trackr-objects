@@ -1,0 +1,38 @@
+{
+	"name": "trackr-objects",
+	"version": "0.1.0",
+	"description": "Turns JavaScript objects and arrays into reactive resources for Trackr.",
+	"author": "Tyler Johnson <tyler@tylerjohnson.me>",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tyler-johnson/trackr-objects.git"
+	},
+	"scripts": {
+		"prepublish": "grunt"
+	},
+	"dependencies": {
+		"array-spy": "~0.1.0",
+		"has-own-prop": "~1.0.0",
+		"is-plain-object": "~2.0.1",
+		"shallow-copy": "0.0.1"
+	},
+	"peerDependencies": {
+		"trackr": "~1.0.3"
+	},
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-browserify": "~3.8.0",
+		"grunt-cli": "~0.1.13",
+		"grunt-contrib-clean": "~0.6.0",
+		"grunt-contrib-concat": "~0.5.1",
+		"grunt-contrib-uglify": "~0.9.1"
+	},
+	"license": "MIT",
+	"keywords": [
+		"trackr",
+		"objects",
+		"array",
+		"reactive"
+	]
+}
