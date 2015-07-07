@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 					isFile: true
 				}],
 				options: {
-					banner: "/*\n * Trackr Objects\n * (c) 2015 Tyler Johnson\n * MIT License\n * Version <%= pkg.version %>\n */\n"
+					banner: "/*\n * Trackr Objects\n * (c) 2015 Tyler Johnson\n * MIT License\n * Version <%= pkg.version %>\n */\n\n"
 				}
 			}
 		},
