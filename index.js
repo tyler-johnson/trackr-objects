@@ -1,14 +1,8 @@
-var Trackr;
+var Trackr = require("trackr");
 var hasOwn = require("has-own-prop");
 var clone = require("shallow-copy");
 var isPlainObject = require("is-plain-object");
 var patchArray = require("array-spy");
-
-try {
-	Trackr = require("trackr");
-} catch(e) {
-	Trackr = global.Trackr;
-}
 
 var track =
 module.exports = function(obj, replacer) {

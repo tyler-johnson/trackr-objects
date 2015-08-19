@@ -1,6 +1,6 @@
 # Trackr Objects
 
-This library turns plain JavaScript arrays and objects into reactive resources for Trackr.
+This library turns plain JavaScript arrays and objects into reactive resources for [Trackr](http://ghub.io/trackr).
 
 ## Install
 
@@ -14,14 +14,12 @@ Download a UMD bundle from the [releases page](https://github.com/tyler-johnson/
 If using Browserify or Node.js, you can install via NPM.
 
 ```sh
-$ npm install trackr trackr-objects
+$ npm install trackr-objects
 ```
-
-Trackr Objects depends on [Trackr](https://npmjs.com/package/trackr). Please include it before this library.
 
 ## Usage
 
-You can deeply track changes to any plain object or array with the main `track` function. All existing properties are matched to Trackr dependency under the hood. This makes them easy to use in autorun statements.
+You can deeply track changes to any plain object or array with the main `track` function. All existing properties are matched to a Trackr dependency under the hood. This makes them easy to use in autorun statements.
 
 ```js
 // deep tracking
