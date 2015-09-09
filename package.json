@@ -9,6 +9,7 @@
 		"url": "https://github.com/tyler-johnson/trackr-objects.git"
 	},
 	"scripts": {
+		"lint": "jshint index.js",
 		"build-js": "browserify ./ --standalone track > dist/trackr-objects.js",
 		"build-min-js": "browserify ./ --standalone track | uglifyjs > dist/trackr-objects.min.js",
 		"build": "rm -rf dist/ && mkdir -p dist/ && npm run build-js && npm run build-min-js"
@@ -22,6 +23,7 @@
 	},
 	"devDependencies": {
 		"browserify": "~11.0.1",
+		"jshint": "~2.8.0",
 		"uglify-js": "~2.4.24"
 	},
 	"license": "MIT",

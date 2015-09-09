@@ -3,6 +3,7 @@ var hasOwn = require("has-own-prop");
 var clone = require("shallow-copy");
 var isPlainObject = require("is-plain-object");
 var patchArray = require("array-spy");
+var trackObject, trackArray;
 
 var track =
 module.exports = function(obj, replacer) {
@@ -13,12 +14,11 @@ module.exports = function(obj, replacer) {
 		return nval;
 	}
 
-	if (Array.isArray(obj)) return trackArray(obj, replace)
+	if (Array.isArray(obj)) return trackArray(obj, replace);
 	if (isPlainObject(obj)) return trackObject(obj, replace);
 	return obj;
-}
+};
 
-var trackProperty =
 track.trackProperty = function(obj, prop, value, options) {
 	if (typeof obj !== "object" || obj == null) {
 		throw new Error("Expecting object to define the reactive property on.");
@@ -26,10 +26,10 @@ track.trackProperty = function(obj, prop, value, options) {
 
 	if (typeof prop !== "string") throw new Error("Expecting string for property name.");
 
-	var dep = new Trackr.Dependency;
+	var dep = new Trackr.Dependency();
 
 	Object.defineProperty(obj, prop, {
-		configurable: options == null || options.configurable !== false,
+		configurable: options != null && Boolean(options.configurable),
 		enumerable: options == null || options.enumerable !== false,
 		set: function(val) {
 			if (val !== value) {
@@ -46,9 +46,9 @@ track.trackProperty = function(obj, prop, value, options) {
 	});
 
 	return obj;
-}
+};
 
-var trackObject =
+trackObject =
 track.trackObject = function(props, replacer) {
 	if (props.__reactive) return props;
 
@@ -123,9 +123,9 @@ track.trackObject = function(props, replacer) {
 	}
 
 	return robj;
-}
+};
 
-var trackArray =
+trackArray =
 track.trackArray = function(arr, replacer) {
 	if (!Array.isArray(arr)) throw new Error("Expecting array.");
 	if (arr.__reactive) return arr;
@@ -224,4 +224,4 @@ track.trackArray = function(arr, replacer) {
 
 	narr.push.apply(narr, arr);
 	return narr;
-}
+};
