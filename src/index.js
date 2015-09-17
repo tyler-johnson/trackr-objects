@@ -3,11 +3,11 @@ import "babel/polyfill";
 import isPlainObject  from "is-plain-object";
 import { trackProperty, trackObject } from "./object";
 import { trackArray } from "./array";
-import { Set } from "./set";
 import { Map } from "./map";
 import { List } from "./list";
+import { Variable } from "./var";
 
-export { Set, List, Map, trackProperty, trackObject, trackArray };
+export { List, Map, Variable, trackProperty, trackObject, trackArray };
 
 export function track(obj, replacer) {
 	function replace(k, v) {

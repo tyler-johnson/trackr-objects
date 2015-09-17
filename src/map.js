@@ -84,6 +84,12 @@ export class Map {
 		return Object.keys(this._values);
 	}
 
+	* entries() {
+		for (let k of this.keys()) {
+			yield [ k, this.get(k) ];
+		}
+	}
+
 	* values() {
 		for (let k of this.keys()) {
 			yield this.get(k);

@@ -3,16 +3,17 @@
 	"version": "0.2.0",
 	"description": "Turns JavaScript objects and arrays into reactive resources for Trackr.",
 	"author": "Tyler Johnson <tyler@tylerjohnson.me>",
-	"main": "index.js",
+	"main": "./lib/index.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tyler-johnson/trackr-objects.git"
 	},
 	"scripts": {
-		"lint": "jshint index.js",
-		"build-js": "browserify ./src/index.js -t babelify --standalone track > dist/trackr-objects.js",
-		"build-min-js": "browserify ./src/index.js -t babelify --standalone track | uglifyjs > dist/trackr-objects.min.js",
-		"build": "rm -rf dist/ && mkdir -p dist/ && npm run build-js && npm run build-min-js"
+		"lint": "jshint src/",
+		"build-js": "rm -rf lib/ && babel -d lib/ src/",
+		"build-browser": "rm -rf dist/ && mkdir -p dist/ && browserify ./src/index.js -t babelify --standalone track -o dist/trackr-objects.js && uglifyjs dist/trackr-objects.js -o dist/trackr-objects.min.js",
+		"build": "npm run build-js && npm run build-browser",
+		"prepublish": "npm run lint && npm run build"
 	},
 	"dependencies": {
 		"trackr": "~2.0.0",
@@ -22,8 +23,8 @@
 		"shallow-copy": "0.0.1"
 	},
 	"devDependencies": {
-		"babel": "^5.8.23",
-		"babelify": "^6.3.0",
+		"babel": "~5.8.23",
+		"babelify": "~6.3.0",
 		"browserify": "~11.0.1",
 		"jshint": "~2.8.0",
 		"uglify-js": "~2.4.24"
