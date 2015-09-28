@@ -18,4 +18,8 @@ export class Variable {
 		this._dep.depend();
 		return this._value;
 	}
+
+	toString() {
+		return "" + this.get();
+	}
 }
