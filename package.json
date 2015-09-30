@@ -1,6 +1,6 @@
 {
 	"name": "trackr-objects",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "Turns JavaScript objects and arrays into reactive resources for Trackr.",
 	"author": "Tyler Johnson <tyler@tylerjohnson.me>",
 	"main": "./lib/index.js",
