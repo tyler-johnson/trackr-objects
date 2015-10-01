@@ -22,4 +22,8 @@ export class Variable {
 	toString() {
 		return "" + this.get();
 	}
+
+	toJSON() {
+		return this.get();
+	}
 }

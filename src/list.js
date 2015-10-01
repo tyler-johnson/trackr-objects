@@ -189,6 +189,10 @@ export class List {
 		// depend on length if it gets to the end
 		this._lengthDep.depend();
 	}
+
+	toJSON() {
+		return this.slice(0);
+	}
 }
 
 List.prototype[Symbol.iterator] = List.prototype.values;

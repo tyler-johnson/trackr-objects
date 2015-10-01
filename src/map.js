@@ -95,6 +95,12 @@ export class Map {
 			yield this.get(k);
 		}
 	}
+
+	toJSON() {
+		let out = {};
+		for (let k of this.keys()) out[k] = this.get(k);
+		return out;
+	}
 }
 
 Map.prototype[Symbol.iterator] = Map.prototype.values;
