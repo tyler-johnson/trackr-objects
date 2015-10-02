@@ -42,6 +42,48 @@ export class List {
 		return r;
 	}
 
+	push() {
+		let args = [ this._items.length, 0 ].concat(slice(arguments));
+		this.splice.apply(this, args);
+		return this._items.length;
+	}
+
+	pop() {
+		return this.splice(this._items.length - 1, 1)[0];
+	}
+
+	unshift() {
+		let args = [ 0, 0 ].concat(slice(arguments));
+		this.splice.apply(this, args);
+		return this._items.length;
+	}
+
+	shift() {
+		return this.splice(0, 1)[0];
+	}
+
+	reverse() {
+		this._items.reverse();
+
+		this._itemDep.changed();
+		for (let i = 0; i < this._items.length; i++) {
+			this._getDep(i).changed();
+		}
+
+		return this;
+	}
+
+	sort(f) {
+		this._items.sort(f);
+
+		this._itemDep.changed();
+		for (let i = 0; i < this._items.length; i++) {
+			this._getDep(i).changed();
+		}
+
+		return this;
+	}
+
 	set(index, value) {
 		this.splice(index, 1, value);
 		return this;
@@ -206,27 +248,3 @@ function pushDynamic(l, v) {
 	else if (List.isList(v)) v.forEach(i =>	l.push(i));
 	else l.push(v);
 }
-
-;[ "push", "pop", "shift", "unshift",
-   "reverse", "sort" ].forEach(function(method) {
-	List.prototype[method] = function() {
-		var r = this.splice.apply(this, patchArray.getSpliceEquivalent(this._items, method, slice(arguments)));
-
-		switch (method) {
-			case "push":
-			case "unshift":
-				return this._items.length;
-
-			case "shift":
-			case "pop":
-				return r[0];
-
-			case "reverse":
-			case "sort":
-				return this;
-
-			default:
-				return r;
-		}
-	};
-});
