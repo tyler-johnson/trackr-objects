@@ -84,17 +84,18 @@ export class Map {
 		return Object.keys(this._values);
 	}
 
-	* entries() {
-		for (let k of this.keys()) {
-			yield [ k, this.get(k) ];
-		}
-	}
-
-	* values() {
-		for (let k of this.keys()) {
-			yield this.get(k);
-		}
-	}
+	// TODO enable when ES6 settles
+	// * entries() {
+	// 	for (let k of this.keys()) {
+	// 		yield [ k, this.get(k) ];
+	// 	}
+	// }
+	//
+	// * values() {
+	// 	for (let k of this.keys()) {
+	// 		yield this.get(k);
+	// 	}
+	// }
 
 	toJSON() {
 		let out = {};
@@ -103,4 +104,4 @@ export class Map {
 	}
 }
 
-Map.prototype[Symbol.iterator] = Map.prototype.values;
+// Map.prototype[Symbol.iterator] = Map.prototype.values;
