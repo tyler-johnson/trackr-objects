@@ -1,5 +1,3 @@
-import "babel/polyfill";
-
 import isPlainObject  from "is-plain-object";
 import { trackProperty, trackObject } from "./object";
 import { trackArray } from "./array";

@@ -221,23 +221,24 @@ export class List {
 		return true;
 	}
 
-	* values() {
-		let len = this._items.length;
-
-		for (let i = 0; i < len; i++) {
-			yield this.get(i);
-		}
-
-		// depend on length if it gets to the end
-		this._lengthDep.depend();
-	}
+	// TODO enable when ES6 settles
+	// * values() {
+	// 	let len = this._items.length;
+	//
+	// 	for (let i = 0; i < len; i++) {
+	// 		yield this.get(i);
+	// 	}
+	//
+	// 	// depend on length if it gets to the end
+	// 	this._lengthDep.depend();
+	// }
 
 	toJSON() {
 		return this.slice(0);
 	}
 }
 
-List.prototype[Symbol.iterator] = List.prototype.values;
+// List.prototype[Symbol.iterator] = List.prototype.values;
 
 List.isList = function(o) {
 	return o instanceof List;
