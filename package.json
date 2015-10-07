@@ -11,7 +11,7 @@
 	"scripts": {
 		"lint": "jshint src/",
 		"build-js": "rm -rf lib/ && babel -d lib/ src/",
-		"build-browser": "rm -rf dist/ && mkdir -p dist/ && browserify ./src/index.js -t babelify --standalone track -o dist/trackr-objects.js && uglifyjs dist/trackr-objects.js -o dist/trackr-objects.min.js",
+		"build-browser": "rm -rf dist/ && mkdir -p dist/ && browserify ./src/index.js -t babelify --standalone TrackrObjects -o dist/trackr-objects.js && uglifyjs dist/trackr-objects.js -o dist/trackr-objects.min.js",
 		"build": "npm run build-js && npm run build-browser",
 		"prepublish": "npm run lint && npm run build"
 	},
