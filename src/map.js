@@ -18,6 +18,13 @@ export class Map {
 	}
 
 	set(key, value) {
+		if (typeof key === "object") {
+			for (var k in key) {
+				if (hasOwn(key, k)) this.set(k, key[k]);
+			}
+			return this;
+		}
+
 		let has = hasOwn(this._values, key);
 
 		if (!has || this._values[key] !== value) {

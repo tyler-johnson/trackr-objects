@@ -236,6 +236,10 @@ export class List {
 	toJSON() {
 		return this.slice(0);
 	}
+
+	toArray() {
+		return this.slice(0);
+	}
 }
 
 // List.prototype[Symbol.iterator] = List.prototype.values;
