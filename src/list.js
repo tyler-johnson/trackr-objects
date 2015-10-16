@@ -13,6 +13,9 @@ export class List {
 		for (let a of slice(arguments)) pushDynamic(this, a);
 	}
 
+	get __trackr() { return true; }
+	get __trackr_type() { return "list"; }
+
 	get length() {
 		this._lengthDep.depend();
 		return this._items.length;
@@ -245,7 +248,7 @@ export class List {
 // List.prototype[Symbol.iterator] = List.prototype.values;
 
 List.isList = function(o) {
-	return o instanceof List;
+	return o && o.__trackr && o.__trackr_type === "list";
 };
 
 function pushDynamic(l, v) {

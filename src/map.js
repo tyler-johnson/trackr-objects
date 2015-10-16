@@ -13,6 +13,9 @@ export class Map {
 		}
 	}
 
+	get __trackr() { return true; }
+	get __trackr_type() { return "map"; }
+
 	get size() {
 		return this.keys().length;
 	}
@@ -112,3 +115,7 @@ export class Map {
 }
 
 // Map.prototype[Symbol.iterator] = Map.prototype.values;
+
+Map.isMap = function(o) {
+	return o && o.__trackr && o.__trackr_type === "map";
+};

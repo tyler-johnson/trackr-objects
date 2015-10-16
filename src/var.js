@@ -7,6 +7,9 @@ export class Variable {
 		this.set(value);
 	}
 
+	get __trackr() { return true; }
+	get __trackr_type() { return "variable"; }
+
 	set(value) {
 		if (value !== this._value) {
 			this._value = value;
@@ -27,3 +30,7 @@ export class Variable {
 		return this.get();
 	}
 }
+
+Variable.isVariable = function(o) {
+	return o && o.__trackr && o.__trackr_type === "variable";
+};
