@@ -134,6 +134,7 @@ export class List {
 				upTo = len + end;
 			}
 		} else {
+			this._lengthDep.depend();
 			upTo = len;
 		}
 
