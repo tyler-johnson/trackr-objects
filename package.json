@@ -16,11 +16,7 @@
 		"prepublish": "npm run lint && npm run build"
 	},
 	"dependencies": {
-		"trackr": "~2.0.0",
-		"array-spy": "~0.1.0",
-		"has-own-prop": "~1.0.0",
-		"is-plain-object": "~2.0.1",
-		"shallow-copy": "0.0.1"
+		"trackr": "2.x"
 	},
 	"devDependencies": {
 		"babel": "~5.8.23",
