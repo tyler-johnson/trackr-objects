@@ -1,33 +1,29 @@
 {
 	"name": "trackr-objects",
-	"version": "0.3.7",
 	"description": "Turns JavaScript objects and arrays into reactive resources for Trackr.",
 	"author": "Tyler Johnson <tyler@tylerjohnson.me>",
-	"main": "./lib/index.js",
+	"main": "./index.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tyler-johnson/trackr-objects.git"
 	},
 	"scripts": {
 		"lint": "jshint src/",
-		"build-js": "rm -rf lib/ && babel -d lib/ src/",
-		"build-browser": "rm -rf dist/ && mkdir -p dist/ && browserify ./src/index.js -t babelify --standalone TrackrObjects -o dist/trackr-objects.js && uglifyjs dist/trackr-objects.js -o dist/trackr-objects.min.js",
-		"build": "npm run build-js && npm run build-browser",
-		"prepublish": "npm run lint && npm run build"
+		"build": "make",
+		"prepublish": "npm run build",
+		"semantic-release": "semantic-release pre && npm publish && semantic-release post"
 	},
 	"dependencies": {
-		"trackr": "~2.0.0",
-		"array-spy": "~0.1.0",
-		"has-own-prop": "~1.0.0",
-		"is-plain-object": "~2.0.1",
-		"shallow-copy": "0.0.1"
+		"trackr": "2.x"
 	},
 	"devDependencies": {
-		"babel": "~5.8.23",
-		"babelify": "~6.3.0",
-		"browserify": "~11.0.1",
-		"jshint": "~2.8.0",
-		"uglify-js": "~2.4.24"
+		"babel-preset-es2015-rollup": "~1.1.1",
+		"browserify": "~13.0.0",
+		"jshint": "~2.9.1",
+		"rollup": "~0.25.4",
+		"rollup-plugin-babel": "~2.3.9",
+		"semantic-release": "^4.3.5",
+		"uglify-js": "~2.6.1"
 	},
 	"license": "MIT",
 	"keywords": [

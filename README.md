@@ -1,20 +1,20 @@
 # Trackr Objects
 
+[![npm](https://img.shields.io/npm/v/trackr-objects.svg)](https://www.npmjs.com/package/trackr-objects) [![David](https://img.shields.io/david/strongloop/trackr-objects.svg)](https://david-dm.org/tyler-johnson/trackr-objects) [![Build Status](https://travis-ci.org/tyler-johnson/trackr-objects.svg?branch=master)](https://travis-ci.org/tyler-johnson/trackr-objects)
+
 This library provides basic reactive helpers for use with [Trackr](http://ghub.io/trackr).
 
 ## Install
 
-Download a UMD bundle from the [releases page](https://github.com/tyler-johnson/trackr-objects/releases). The variable `TrackrObjects` will be attached to `window`.
-
-```html
-<script type="text/javascript" src="trackr-objects.js"></script>
-```
-
-If using Browserify or Node.js, you can install via NPM.
+Install via NPM.
 
 ```sh
-$ npm install trackr-objects
+npm install trackr-objects --save
 ```
+
+For Browserify and Node.js, the package is ready to consume with `require("trackr-objects")`.
+
+If you need to use this directly in the browser, the downloaded NPM package contains precompiled JS files within the `dist` folder. The variable `TrackrObjects` will be attached to `window`.
 
 ## Usage
 
@@ -83,46 +83,17 @@ var first = list.get(0);
 list.set(2, { foo: "bar" });
 ```
 
-### Object and Array Patching
+### Object Property Tracking
 
-**Note:** It is not recommended to patch objects and arrays to obtain reactivity. In JavaScript, it is impossible to see all changes that happen to an object, resulting in only partial reactivity. For a guarantee, wrap unpatched objects with Map and List and use those objects. `trackProperty()`, on the other hand, is a very useful method that you are encouraged to used.
-
-You can deeply track changes to any plain object or array with the main `track` function. All existing properties are matched to a Trackr dependency under the hood. This makes them easy to use in autorun statements.
+You can easily track indivdual properties on existing objects with the `.trackObject()` method. Simply pass in an object and string for the property to track and the property will be made transparently reactive.
 
 ```js
-// deep tracking
-var data = TrackrObjects.track({ foo: "bar" });
+var data = {};
+TrackrObjects.trackProperty(data, "foo", "bar");
 
-// runs whenever foo changes
 Trackr.autorun(function() {
 	console.log(data.foo);
 });
 
-// later, change foo property
-data.foo = "something else";
-```
-
-If you don't want to track deep changes, use `trackObject` and `trackArray`.
-
-```js
-// shallow tracking
-var obj = TrackrObjects.trackObject({ foo: "bar" });
-var arr = TrackrObjects.trackArray([ "a" ]);
-
-// property tracking
-var data = {};
-TrackrObjects.trackProperty(data, "foo");
-```
-
-This library can only track existing properties, so use the `defineProperty` method to add additional reactive properties.
-
-```js
-var data = TrackrObjects.track({});
-
-// BAD: foo is not reactive
-data.foo = "bar";
-
-// GOOD: foo is reactive
-data.defineProperty("foo");
-data.foo = "bar";
+data.foo = "boom";
 ```
