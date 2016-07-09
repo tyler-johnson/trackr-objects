@@ -5,7 +5,8 @@ build: index.js
 
 index.js: src/index.js $(SRC)
 	$(BIN)/rollup $< -c > $@
+
 clean:
-	rm index.js
+	rm -rf index.js
 
 .PHONY: build clean
