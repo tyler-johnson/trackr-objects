@@ -1,8 +1,8 @@
 # Trackr Objects
 
-[![npm](https://img.shields.io/npm/v/trackr-objects.svg)](https://www.npmjs.com/package/trackr-objects) [![David](https://img.shields.io/david/strongloop/trackr-objects.svg)](https://david-dm.org/tyler-johnson/trackr-objects) [![Build Status](https://travis-ci.org/tyler-johnson/trackr-objects.svg?branch=master)](https://travis-ci.org/tyler-johnson/trackr-objects)
+[![npm](https://img.shields.io/npm/v/trackr-objects.svg)](https://www.npmjs.com/package/trackr-objects) [![David](https://img.shields.io/david/tyler-johnson/trackr-objects.svg)](https://david-dm.org/tyler-johnson/trackr-objects) [![Build Status](https://travis-ci.org/tyler-johnson/trackr-objects.svg?branch=master)](https://travis-ci.org/tyler-johnson/trackr-objects)
 
-This library provides basic reactive helpers for use with [Trackr](http://ghub.io/trackr).
+This library provides basic reactive data types for use with [Trackr](http://ghub.io/trackr).
 
 ## Install
 
@@ -11,10 +11,6 @@ Install via NPM.
 ```sh
 npm install trackr-objects --save
 ```
-
-For Browserify and Node.js, the package is ready to consume with `require("trackr-objects")`.
-
-If you need to use this directly in the browser, the downloaded NPM package contains precompiled JS files within the `dist` folder. The variable `TrackrObjects` will be attached to `window`.
 
 ## Usage
 
@@ -91,7 +87,7 @@ list.set(2, { foo: "bar" });
 
 ### Object Property Tracking
 
-You can easily track indivdual properties on existing objects with the `.trackObject()` method. Simply pass in an object and string for the property to track and the property will be made transparently reactive.
+You can easily track indivdual properties on existing objects with the `trackProperty()` method. Simply pass in an object and string for the property to track and the property will be made transparently reactive.
 
 ```js
 import Trackr from "trackr";
