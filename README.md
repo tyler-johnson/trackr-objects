@@ -25,7 +25,9 @@ Trackr Objects provides three base classes, Map, List and Variable. These aim to
 This is a very simple class that emulates the regular `var` in JavaScript. Call the constructor with the initial value to create.
 
 ```js
-var val = new TrackrObjects.Variable("my value");
+import {Variable} from "trackr-objects";
+
+const val = new Variable("my value");
 ```
 
 It is very easy to get and set data on a reactive variable.
@@ -40,7 +42,9 @@ val.set("new value"); // sets the data
 The Map class is similar to a normal JavaScript object, it assigns values to unique keys. To create a new map, call the constructor with some base data.
 
 ```js
-var data = new TrackrObjects.Map({ foo: "bar" });
+import {Map as ReactiveMap} from "trackr-objects";
+
+const data = new ReactiveMap({ foo: "bar" });
 ```
 
 There are several methods for retrieving data from the map reactively.
@@ -65,7 +69,9 @@ data.clear(); // deletes all data from the map
 The List class aims to duplicate the functionality of the JavaScript array. To create, pass the constructor an array with initial data.
 
 ```js
-var list = new TrackrObjects.List([ "a", "b", "c" ]);
+import {List} from "trackr-objects";
+
+const list = new List([ "a", "b", "c" ]);
 ```
 
 Lists have almost all of the same methods as arrays, making them easy drop-ins.
@@ -79,7 +85,7 @@ list.forEach(function(){});
 To retrieve and set data at a specific index in a list, use the `.get()` and `.set()` methods.
 
 ```js
-var first = list.get(0);
+let first = list.get(0);
 list.set(2, { foo: "bar" });
 ```
 
@@ -88,12 +94,16 @@ list.set(2, { foo: "bar" });
 You can easily track indivdual properties on existing objects with the `.trackObject()` method. Simply pass in an object and string for the property to track and the property will be made transparently reactive.
 
 ```js
-var data = {};
-TrackrObjects.trackProperty(data, "foo", "bar");
+import Trackr from "trackr";
+import {trackProperty} from "trackr-objects";
+
+let data = {};
+trackProperty(data, "foo", "bar");
 
 Trackr.autorun(function() {
 	console.log(data.foo);
 });
 
+// later, change the value and it will be logged
 data.foo = "boom";
 ```
